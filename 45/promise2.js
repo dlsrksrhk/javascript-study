@@ -12,7 +12,7 @@ const func3 = () => {
   );
 };
 
-const res = [];
+// const res = [];
 // Promise.all([func1(), func2(), func3()])
 //   .then((results) => {
 //     res.push(...results);
@@ -36,7 +36,14 @@ const res = [];
 //     console.log(res); // [1, 2, 3]
 //   });
 
-Promise.all(["apple", "banana", "grape"]).then((results) => {
-  res.push(...results);
-  console.log(res);
+const res = [];
+
+Promise.allSettled([
+  new Promise((resolve) => setTimeout(() => resolve("apple"), 3000)),
+  new Promise((resolve) => setTimeout(() => resolve("banana"), 2000)),
+  new Promise((resolve, reject) =>
+    setTimeout(() => reject("grape is rejected"), 1000)
+  ),
+]).then((result) => {
+  console.log(result);
 });
