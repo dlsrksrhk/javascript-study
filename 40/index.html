@@ -18,11 +18,11 @@
       class App {
         constructor() {
           this.$button = document.querySelector(".btn");
-          this.$button.onclick = this.printThis.bind(this); //this를 현재 인스턴스로 바인딩
+          this.$button.onclick = this.printThis.bind(this); //printThis()의 this를 현재 인스턴스로 바인딩
         }
 
         printThis() {
-          console.log(this); //this
+          console.log(this); //App
         }
       }
 
